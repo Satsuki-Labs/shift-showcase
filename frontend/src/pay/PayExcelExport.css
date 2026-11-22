@@ -1,0 +1,24 @@
+.pay-excel-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.pay-excel-facts {
+  flex: 1;
+  min-width: 0;
+}
+.pay-excel-facts .kv {
+  grid-template-columns: 6em minmax(0, 1fr);
+  gap: var(--space-2);
+}
+.pay-excel-facts .kv + .kv {
+  margin-top: var(--space-2);
+}
+.pay-excel-facts .v {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.pay-excel-actions {
+  flex: none;
+}

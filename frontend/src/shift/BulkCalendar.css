@@ -1,0 +1,221 @@
+.bulk-calendar-section {
+  min-width: 0;
+  padding: 12px 20px 20px;
+}
+.bulk-calendar-section > .sec-t {
+  padding: 0;
+  margin: 0 0 12px;
+  min-height: 26px;
+  color: var(--text-sub);
+  font-size: var(--text-small);
+  gap: 6px;
+}
+.bulk-calendar-section .bulk-calendar {
+  display: grid;
+  gap: var(--space-2);
+}
+.bulk-calendar-section .bulk-pick-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: var(--space-2);
+}
+.bulk-calendar-section .pick {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-1) var(--space-1) var(--space-2);
+  background: var(--line);
+  border-radius: var(--radius-part);
+}
+.bulk-calendar-section .pick .btn {
+  border-color: transparent;
+  white-space: nowrap;
+}
+.bulk-calendar-section .pk-lab {
+  font-size: var(--text-small);
+  font-weight: var(--weight-strong);
+  color: var(--text-sub);
+  white-space: nowrap;
+}
+.bulk-calendar-section .bulk-selection-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 var(--space-2);
+  background: var(--line);
+  border-radius: var(--radius-part);
+  font-weight: var(--weight-strong);
+  white-space: nowrap;
+}
+.bulk-calendar-section .bulk-selection-count b {
+  font-size: var(--text-title);
+}
+.bcal {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+  padding: var(--space-1);
+  background: var(--line);
+  border-radius: var(--radius-part);
+}
+.bcal .bw {
+  text-align: center;
+  font-size: var(--text-small);
+  font-weight: var(--weight-strong);
+  color: var(--text-sub);
+  padding: 4px;
+  background: var(--bg);
+  border-radius: var(--radius-small);
+}
+.bcal .bw.sat {
+  color: var(--surface);
+  background: var(--sat);
+}
+.bcal .bw.sun {
+  color: var(--surface);
+  background: var(--sun);
+}
+.bcal .bcal-cell {
+  min-width: 0;
+}
+.bcal .bd {
+  font: inherit;
+  line-height: revert-layer;
+  font-weight: var(--weight-strong);
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius);
+  border: 2px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 2px;
+  cursor: pointer;
+}
+.bcal .bd.on {
+  background: var(--action);
+  border-color: var(--action);
+  color: var(--surface);
+}
+.bcal .bd.closed {
+  background: var(--closed-surface);
+  border-color: transparent;
+  color: var(--text-sub);
+}
+.bcal .bd.paid {
+  background: var(--paid);
+  border-color: var(--paid);
+}
+.bcal .bd.unavailable {
+  opacity: 0.55;
+}
+.bcal .bd small {
+  font-size: var(--bulk-day-note-size);
+  --leading: 1.2;
+}
+.bcal .bulk-day-number {
+  line-height: 22px;
+}
+.bcal .bulk-day-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 18px;
+  flex: none;
+}
+.bcal .bulk-day-bands {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.bcal .bulk-day-band {
+  display: block;
+  height: 6px;
+  border-radius: var(--radius-small-mark);
+  background: var(--text-sub);
+}
+.bcal .bd.on .bulk-day-band {
+  background: var(--surface);
+}
+.bcal button.bd:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: 2px;
+}
+.bcal .mk {
+  display: flex;
+}
+.bcal.ro {
+  gap: 4px;
+}
+.bcal.ro .bd {
+  aspect-ratio: auto;
+  height: 40px;
+  cursor: default;
+  font-size: var(--text-small);
+}
+.bcal.ro .bd.closed {
+  flex-direction: row;
+  gap: 3px;
+}
+.lg {
+  position: relative;
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  row-gap: 6px;
+  padding: 2px var(--space-1) 12px;
+  margin-bottom: 4px;
+  font-size: var(--text-small);
+  color: var(--text-sub);
+  font-weight: var(--weight-strong);
+}
+.lg::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 0;
+  height: 2px;
+  border-radius: var(--radius-round);
+  background: color-mix(in srgb, var(--text) 14%, transparent);
+}
+.lg > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.lg .l {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-legend-swatch);
+  display: inline-block;
+  flex: none;
+}
+.lg .l.on {
+  background: var(--action);
+}
+.lg .l.closed {
+  background: var(--closed-surface);
+  border: 1px solid var(--line);
+}
+.lg .l.paid {
+  background: var(--paid);
+}
+.lg .bulk-day-band {
+  display: block;
+  width: 24px;
+  height: 6px;
+  border-radius: var(--radius-small-mark);
+  background: var(--text-sub);
+}

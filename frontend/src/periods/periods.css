@@ -1,0 +1,584 @@
+/* ピリオド管理 */
+.period-tab {
+  display: grid;
+  gap: var(--space-2);
+}
+.period-tab > .toolbar {
+  padding-top: 5px;
+  padding-bottom: calc(var(--space-1) - 5px);
+}
+.period-panel .raised-panel-body {
+  clip-path: inset(0 1px 1px round 0 0 var(--radius-part) var(--radius-part));
+}
+.period-panel .period-list > .band {
+  background: transparent;
+}
+.period-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px 100px 210px 230px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+.period-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.period-actions .btn {
+  min-width: 0;
+  white-space: nowrap;
+}
+.dlg.url-dialog {
+  max-width: 800px;
+}
+.url-dialog .dlg-head {
+  align-items: flex-start;
+}
+.url-dialog .dlg-heading {
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-1);
+}
+.url-dialog .dlg-heading > b {
+  min-width: 0;
+  min-height: var(--touch);
+}
+.url-dialog .dlg-heading > b > svg {
+  flex: none;
+}
+.url-dialog .dlg-heading > b > span:not(.url-state) {
+  min-width: 0;
+}
+.url-dialog .dlg-heading > small {
+  margin-left: calc(24px + var(--space-1));
+}
+.url-dialog .url-state {
+  flex: none;
+  white-space: nowrap;
+}
+.url-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: var(--space-1);
+  padding: 2px 12px;
+  border-radius: var(--radius-round);
+  font-size: var(--text-small);
+  font-weight: var(--weight-strong);
+}
+.url-state.open {
+  background: var(--action-tint);
+  color: var(--action);
+}
+.url-state.closed {
+  background: var(--off);
+  color: var(--text);
+}
+.url-share.field-group {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-2);
+}
+.url-dialog:has(.url-steps) > .dlg-foot {
+  padding-top: var(--space-2);
+}
+.url-qr {
+  width: 200px;
+  height: 200px;
+  padding: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--surface);
+  border: 0;
+  border-radius: var(--radius-part);
+  color: var(--text);
+  position: relative;
+}
+.url-qr > svg {
+  width: 176px;
+  height: 176px;
+  display: block;
+}
+.url-qr.off > svg {
+  opacity: 0.15;
+}
+.url-qr .lock {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+}
+.url-closed {
+  background: var(--well);
+  border-radius: var(--radius-part);
+  padding: var(--space-2);
+}
+.url-closed b {
+  display: block;
+}
+.url-closed b > span {
+  white-space: nowrap;
+}
+.url-closed p {
+  margin: var(--space-1) 0 0;
+  color: var(--text-sub);
+  font-size: var(--text-small);
+  white-space: pre-line;
+}
+.url-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+.url-steps li {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 12px;
+  align-items: start;
+  font-weight: var(--weight-strong);
+}
+.url-steps .n {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--action);
+  color: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.url-steps small {
+  display: block;
+  font-size: var(--text-small);
+  color: var(--text-sub);
+  font-weight: var(--weight-body);
+}
+.url-addr {
+  margin-top: var(--space-2);
+  display: block;
+  font-size: var(--text-small);
+  color: var(--text-sub);
+}
+.url-addr b {
+  display: block;
+  margin-bottom: calc(var(--space-1) / 2);
+}
+.url-addr .copy-code {
+  background: var(--line);
+}
+.url-addr .copy-code pre {
+  padding-right: calc(var(--touch) + var(--space-1));
+}
+.url-foot-left {
+  margin-right: auto;
+}
+.url-deadline.field-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 0;
+  padding: 10px var(--space-2);
+}
+.url-deadline span {
+  color: var(--text-sub);
+  font-size: var(--text-small);
+}
+.url-deadline b {
+  margin-right: auto;
+}
+.url-deadline .btn {
+  min-width: 0;
+  width: calc(7em + 22px + 2 * var(--space-2) + var(--space-1));
+  padding-inline: 0;
+  flex: none;
+  white-space: nowrap;
+}
+.url-deadline.warn {
+  background: var(--warn-bg);
+  color: var(--warn-text);
+}
+.url-deadline-failure {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.url-deadline-failure svg {
+  flex: none;
+}
+.request-close-confirm .dlg-body > p {
+  margin: 0;
+}
+.close-warn {
+  align-items: flex-start;
+}
+.close-warn svg {
+  flex: none;
+  margin-top: 3px;
+}
+.request-close-confirm .notice.info svg {
+  color: var(--action);
+  flex: none;
+}
+.period-deadline-locked {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 48px;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-part);
+  background: var(--line);
+  color: var(--text);
+  font-weight: var(--weight-strong);
+}
+.period-deadline-locked svg {
+  flex: none;
+}
+.period-row > div {
+  min-width: 0;
+  padding: 10px;
+  text-align: center;
+}
+.period-row > div:first-child {
+  padding-left: calc(var(--space-2) + 2px);
+}
+.period-row .period-name,
+.period-row .l {
+  text-align: left;
+}
+.period-row .period-name {
+  overflow-wrap: anywhere;
+}
+.period-row.period-current {
+  background: var(--action-tint);
+}
+.period-row.period-current .period-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.period-row.period-current .period-name b {
+  min-width: 0;
+}
+.period-now {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: var(--radius-round);
+  background: var(--action);
+  color: var(--surface);
+  font-size: var(--text-small);
+  font-weight: var(--weight-strong);
+}
+.period-row-dates {
+  white-space: nowrap;
+}
+.period-days {
+  font-size: var(--text-title);
+}
+.period-days .number-unit {
+  margin-left: 4px;
+  font-weight: var(--weight-body);
+}
+.period-deadline {
+  --period-deadline-icon-size: 16px;
+  --period-deadline-gap: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--period-deadline-gap);
+  color: var(--text-sub);
+  font-size: var(--text-small);
+  white-space: nowrap;
+}
+.period-deadline.none {
+  padding-left: calc(var(--period-deadline-icon-size) + var(--period-deadline-gap));
+}
+.period-deadline.open {
+  color: var(--action);
+  font-weight: var(--weight-strong);
+}
+.period-dialog {
+  max-width: 1160px;
+}
+.period-delete-items {
+  margin: var(--space-1) 0 0;
+  padding-left: 1.5em;
+}
+.period-delete-confirm {
+  max-width: 720px;
+}
+.period-backup {
+  margin-top: var(--space-2);
+}
+.period-backup-p {
+  margin: 0 0 var(--space-1);
+}
+.period-backup-rows {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.period-backup-tile {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 14px 12px;
+  background: var(--well);
+  border-radius: var(--radius-part);
+  font-weight: var(--weight-strong);
+}
+.period-backup-tile.done {
+  background: var(--action-tint);
+}
+.period-backup-tile .excel-name {
+  white-space: nowrap;
+}
+.period-backup-act {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
+.period-backup-ok {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--action);
+  font-size: var(--text-small);
+}
+.period-backup .btn-small {
+  gap: 6px;
+}
+.period-delete-confirm .dlg-foot .btn {
+  white-space: nowrap;
+}
+.period-dialog .dlg-body {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  align-items: stretch;
+  row-gap: var(--space-1);
+}
+.period-coverage .panel-heading-row {
+  flex-direction: column-reverse;
+  align-items: stretch;
+}
+.period-basic {
+  position: relative;
+}
+.period-required {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+}
+.period-name-field {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--space-2);
+}
+.period-name-field > .lab {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0 0 6px;
+}
+.period-name-field > .field {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+.period-previous {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  margin-bottom: 6px;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  background: var(--action-tint);
+  color: var(--action);
+  font-size: var(--text-small);
+  font-weight: var(--weight-strong);
+  padding: 2px 12px;
+  border-radius: var(--radius-small);
+}
+.period-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px 16px;
+}
+.period-full {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+.period-range {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 8px;
+}
+.period-range .lab {
+  height: 26px;
+  white-space: nowrap;
+}
+.period-range > .form-message {
+  grid-column: 1 / -1;
+}
+.period-range-warning {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  color: var(--warn-text);
+  font-size: var(--text-small);
+  font-weight: var(--weight-strong);
+}
+.period-range-warning svg {
+  flex: none;
+}
+.period-deadline-group > p.period-range-warning {
+  position: static;
+  margin: 4px 0 0;
+}
+.period-deadline-group {
+  justify-self: start;
+}
+.period-dialog .select {
+  font-size: var(--text-small);
+  padding-inline: 12px;
+  gap: 6px;
+}
+.period-dialog .select svg {
+  flex: none;
+}
+.period-to {
+  padding-bottom: 12px;
+}
+.period-sum {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 48px;
+  padding: 0 16px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-part);
+  background: var(--line);
+  color: var(--text);
+  font-weight: var(--weight-strong);
+  white-space: nowrap;
+}
+.period-sum b {
+  font-size: var(--text-title);
+}
+.period-sum .number-unit {
+  margin-left: 6px;
+}
+.period-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.period-number .field {
+  width: 64px;
+  min-height: 44px;
+  padding: 6px 8px;
+  text-align: right;
+}
+.period-hint {
+  margin: 4px 0 0;
+  font-size: var(--text-small);
+  color: var(--text-sub);
+}
+.period-coverage table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-small);
+}
+.period-coverage .form-message .msg {
+  word-break: auto-phrase;
+}
+.period-coverage thead th {
+  color: var(--text-sub);
+  font-weight: var(--weight-strong);
+  padding: 4px 6px;
+  text-align: center;
+  white-space: nowrap;
+}
+.period-coverage tbody th,
+.period-coverage td {
+  padding: 6px;
+  border-top: 1px solid var(--line);
+}
+.period-coverage tbody th {
+  white-space: nowrap;
+  font-weight: var(--weight-strong);
+}
+.period-coverage .dot {
+  margin-right: 6px;
+}
+.period-ended-field {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 52px;
+  padding-block: 10px;
+}
+.period-ended-field > span:first-child {
+  color: var(--text-sub);
+  font-size: var(--text-small);
+  font-weight: var(--weight-strong);
+}
+.period-ended-field > b {
+  font-size: var(--text-body);
+  font-weight: var(--weight-strong);
+  white-space: nowrap;
+}
+.period-coverage-value {
+  display: block;
+  text-align: center;
+  font-weight: var(--weight-strong);
+  padding: 8px 0;
+}
+.period-budget-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  white-space: nowrap;
+  flex: none;
+  height: 48px;
+  padding: 0 var(--space-2);
+  background: var(--line);
+  border-radius: var(--radius-part);
+}
+.period-budget-head small {
+  display: inline-block;
+  font-size: var(--text-small);
+  font-weight: var(--weight-strong);
+  color: var(--text-sub);
+}
+.period-budget-head small svg {
+  color: var(--action);
+  vertical-align: -4px;
+  margin-right: 6px;
+}
+.period-budget-head b {
+  font-size: var(--text-title);
+  font-weight: var(--weight-strong);
+  color: var(--action);
+}

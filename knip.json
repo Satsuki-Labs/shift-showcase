@@ -1,0 +1,29 @@
+{
+  "$schema": "./node_modules/knip/schema.json",
+  "include": ["files", "exports", "types", "nsExports", "nsTypes"],
+  "includeEntryExports": false,
+  "eslint": false,
+  "vite": false,
+  "vitest": false,
+  "wrangler": false,
+  "workspaces": {
+    ".": {
+      "entry": [
+        "tools/**/run.mjs",
+        "tools/structure/*.test.mjs",
+        "tests/**/*.test.ts",
+        "eslint.config.mjs",
+        "vitest*.config.ts"
+      ],
+      "project": ["shared/**/*.ts", "tools/**/*.{ts,js,mjs}", "*.{ts,js,mjs}"]
+    },
+    "frontend": {
+      "entry": ["src/main.tsx", "vite.config.ts", "postcss.config.cjs"],
+      "project": ["src/**/*.{ts,tsx}", "*.{ts,js,mjs,cjs}"]
+    },
+    "server": {
+      "entry": ["src/index.ts"],
+      "project": ["src/**/*.ts"]
+    }
+  }
+}

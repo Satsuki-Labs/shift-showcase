@@ -1,0 +1,3 @@
+.number-unit {
+  font-size: calc(1em - var(--number-unit-step));
+}

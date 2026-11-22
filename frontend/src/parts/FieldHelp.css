@@ -1,0 +1,55 @@
+.field-help {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  margin-left: 4px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-sub);
+  cursor: pointer;
+}
+.field-help > svg {
+  flex: none;
+}
+.field-help-reveal {
+  overflow: hidden;
+}
+.field-help-reveal,
+.field-help-reveal > .reveal-item {
+  --reveal-blur: 0px;
+}
+.field-help-content {
+  margin-bottom: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background: var(--action);
+  color: var(--surface);
+  border-radius: var(--radius-part);
+  font-size: var(--text-small);
+  font-weight: var(--weight-body);
+}
+.field-help-content p {
+  margin: 0;
+}
+.field-help-text {
+  filter: blur(var(--motion-reveal-blur));
+  transition: filter var(--motion-reveal) var(--ease-standard);
+}
+.field-help-open .field-help-text {
+  filter: none;
+}
+@starting-style {
+  .field-help-open .field-help-text {
+    filter: blur(var(--motion-reveal-blur));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .field-help-text {
+    filter: none;
+    transition: none;
+  }
+}

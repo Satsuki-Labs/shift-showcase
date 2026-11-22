@@ -1,0 +1,173 @@
+.excel-export {
+  margin-left: auto;
+}
+.excel-button {
+  font: inherit;
+  line-height: revert-layer;
+  font-weight: var(--weight-strong);
+  min-height: var(--touch);
+  padding: 0 var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--radius-part);
+  border: 2px solid var(--excel);
+  background: var(--excel);
+  color: var(--surface);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.excel-button:enabled:not([aria-disabled='true']):not(:where([inert], [inert] *)) {
+  box-shadow: var(--shadow-button);
+}
+.excel-button:disabled,
+.excel-button[aria-disabled='true'] {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.excel-button.open {
+  outline: 3px solid color-mix(in srgb, var(--excel) 25%, transparent);
+}
+.excel-chevron {
+  transition: transform var(--motion-hover) var(--ease-standard);
+}
+.excel-button.open .excel-chevron {
+  transform: rotate(180deg);
+}
+.excel-popup {
+  position: fixed;
+  z-index: 4;
+  width: 760px;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-part);
+  box-shadow: var(--shadow-popup);
+  padding: var(--space-2);
+}
+.excel-popup-reveal {
+  opacity: 0;
+  filter: blur(var(--motion-reveal-blur));
+  transition:
+    opacity var(--motion-reveal) var(--ease-standard),
+    filter var(--motion-reveal) var(--ease-standard);
+}
+.excel-popup-reveal.open {
+  opacity: 1;
+  filter: none;
+  animation: period-arrival var(--motion-reveal) var(--ease-standard);
+}
+@media (prefers-reduced-motion: reduce) {
+  .excel-popup-reveal,
+  .excel-popup-reveal.open {
+    animation: none;
+    transition: none;
+    filter: none;
+  }
+}
+.excel-export-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 32px;
+  margin-bottom: 12px;
+  padding: 0 4px;
+  color: var(--action);
+}
+.excel-export-heading b {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-body);
+}
+.excel-export-heading .excel-period {
+  margin-left: auto;
+  gap: var(--space-1);
+  background: var(--line);
+  color: var(--text-sub);
+}
+.excel-export-heading small {
+  font-size: inherit;
+  font-weight: var(--weight-body);
+}
+.excel-row {
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: 96px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  font-weight: var(--weight-strong);
+}
+.excel-row + .excel-row {
+  margin-top: var(--space-1);
+}
+.excel-name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.excel-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-round);
+  flex: none;
+}
+.excel-dot.navy {
+  background: var(--action);
+}
+.excel-dot.blue {
+  background: var(--site1);
+}
+.excel-dot.brown {
+  background: var(--site2);
+}
+.excel-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-1);
+}
+.excel-actions .btn {
+  gap: 6px;
+  justify-content: center;
+}
+.excel-actions .btn {
+  width: 120px;
+}
+.excel-status {
+  display: grid;
+  gap: 2px;
+  font-size: var(--text-small);
+  color: var(--text-sub);
+  white-space: nowrap;
+}
+.excel-status .excel-changed {
+  color: var(--changed);
+}
+.excel-confirm-list {
+  margin: 8px 0 0;
+  padding-left: 1.4em;
+}
+.excel-confirm-dialog {
+  max-width: 720px;
+}
+.excel-confirm-dialog .dlg-heading {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+}
+.excel-confirm-dialog .dlg-heading b {
+  flex: none;
+  white-space: nowrap;
+}
+.excel-explanation {
+  margin: var(--space-1) 0 0;
+  padding: 0 12px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  font-size: var(--text-small);
+  color: var(--text-sub);
+}
+.excel-explanation svg {
+  flex: none;
+}

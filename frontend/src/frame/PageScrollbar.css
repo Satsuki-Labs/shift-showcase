@@ -1,0 +1,17 @@
+.page-scrollbar {
+  position: fixed;
+  z-index: 0;
+  background: transparent;
+  touch-action: none;
+}
+.page-scrollbar-thumb {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-scrollbar);
+}
+.page-scrollbar-thumb:hover,
+.page-scrollbar:active .page-scrollbar-thumb {
+  background: var(--text-sub);
+}

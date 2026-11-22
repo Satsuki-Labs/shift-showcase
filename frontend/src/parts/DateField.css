@@ -1,0 +1,91 @@
+.date-field .select {
+  white-space: nowrap;
+}
+.date-field .select.empty {
+  color: var(--text-sub);
+}
+.date-field .select svg {
+  color: var(--action);
+  flex: none;
+}
+.date-popup {
+  position: fixed;
+  z-index: 4;
+  width: 320px;
+  max-width: calc(var(--viewport-width, 100vw) - 16px);
+}
+.cal {
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-part);
+  box-shadow: var(--shadow-popup);
+  padding: 10px;
+}
+.calh {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-weight: var(--weight-strong);
+}
+.calh button {
+  font-size: var(--text-title);
+}
+.calg {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  text-align: center;
+}
+.calg i {
+  font-style: normal;
+  font-size: var(--text-small);
+  color: var(--text-sub);
+}
+.calg .sun {
+  color: var(--sun);
+}
+.calg .sat {
+  color: var(--sat);
+}
+.calg button,
+.calg > span {
+  min-height: 40px;
+}
+.calg button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--radius-small);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  line-height: revert-layer;
+  font-size: var(--text-small);
+  font-weight: var(--weight-strong);
+}
+.calg button.on {
+  background: var(--action);
+  color: var(--surface);
+}
+.calg button.today::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 3px;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: var(--action);
+}
+.calg button.today.on::after {
+  background: var(--surface);
+}
+.calf {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}

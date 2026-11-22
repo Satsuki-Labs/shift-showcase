@@ -1,0 +1,244 @@
+.timebar-rows {
+  --timebar-label-width: 128px;
+  --timebar-row-gap: var(--space-2);
+  --timebar-edge: var(--space-4);
+  display: grid;
+}
+.timebar-rows > .reveal-item:not([data-reveal-first]) {
+  padding-top: var(--space-1);
+}
+.timebar-rows > .reveal-item[data-reveal-key='scale'] + .reveal-item {
+  padding-top: 0;
+}
+.timebar-scale {
+  position: relative;
+  height: 34px;
+  margin-left: calc(var(--timebar-label-width) + var(--timebar-row-gap));
+  font-size: var(--text-small);
+  color: var(--text-sub);
+  font-weight: var(--weight-strong);
+}
+.timebar-ruler {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.timebar-coordinate {
+  position: absolute;
+  inset: 0 calc(var(--timebar-edge) + 2px);
+}
+.timebar-coordinate > span {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  line-height: 20px;
+  transform: translateX(-50%);
+}
+.timebar-coordinate > i {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 8px;
+  background: var(--text-sub);
+}
+.timebar-coordinate > i.major {
+  width: 2px;
+  height: 12px;
+}
+.timebar-row {
+  display: grid;
+  grid-template-columns: var(--timebar-label-width) minmax(0, 1fr);
+  column-gap: var(--timebar-row-gap);
+  align-items: start;
+}
+.timebar-name {
+  margin: 0;
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+.timebar-name > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 36px;
+  padding: var(--space-1);
+  border-radius: var(--radius-round);
+  background: var(--line);
+  color: var(--text-sub);
+  font-size: var(--text-small);
+  font-weight: var(--weight-strong);
+  white-space: nowrap;
+}
+.timebar-row[data-selected='true'] .timebar-name > span {
+  color: var(--action);
+}
+.timebar-lane {
+  min-width: 0;
+}
+.timebar-frame {
+  height: 56px;
+  border: 2px solid var(--text-sub);
+  border-radius: var(--radius-small);
+  background: var(--surface);
+}
+.timebar-track {
+  --timebar-grid-width: 2px;
+  position: relative;
+  height: 100%;
+  margin-inline: var(--timebar-edge);
+  user-select: none;
+  touch-action: none;
+}
+.timebar-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  shape-rendering: crispEdges;
+  fill: var(--line);
+}
+.timebar-track.can-draw {
+  cursor: crosshair;
+}
+.timebar-empty-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: var(--text-sub);
+  font-size: var(--text-small);
+  font-weight: var(--weight-strong);
+}
+.timebar-bar,
+.timebar-occupied {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  border-radius: var(--radius);
+}
+.timebar-occupied {
+  background: var(--text-sub);
+  pointer-events: none;
+}
+.timebar-bar {
+  border: 0;
+  color: var(--surface);
+  font: inherit;
+  line-height: revert-layer;
+  font-weight: var(--weight-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 26px;
+  white-space: nowrap;
+  cursor: grab;
+}
+.timebar-bar.selected {
+  z-index: 2;
+}
+.timebar-bar.dragging {
+  cursor: grabbing;
+}
+.timebar-bar.tight {
+  padding: 0;
+  overflow: hidden;
+}
+.timebar-handle {
+  position: absolute;
+  top: 50%;
+  height: 32px;
+  margin-top: -16px;
+  width: min(24px, 44%);
+  background: transparent;
+  border: 0;
+  cursor: ew-resize;
+  z-index: 3;
+}
+.timebar-handle.start {
+  left: 0;
+}
+.timebar-handle.end {
+  right: 0;
+}
+.timebar-handle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(6px, 80%);
+  height: 28px;
+  transform: translate(-50%, -50%);
+  border-radius: var(--radius-round);
+  background: var(--surface);
+  pointer-events: none;
+}
+.timebar-bar.site1,
+.timebar-tag.site1 {
+  background: var(--site1);
+}
+.timebar-bar.site2,
+.timebar-tag.site2 {
+  background: var(--site2);
+}
+.timebar-bar.other,
+.timebar-occupied {
+  opacity: 0.45;
+}
+.timebar-text {
+  flex: none;
+}
+.timebar-bar.tight .timebar-text {
+  visibility: hidden;
+}
+.timebar-lower {
+  display: grid;
+}
+.timebar-lower > .timebar-tags,
+.timebar-lower > .reveal-frame {
+  grid-area: 1 / 1;
+}
+.timebar-lower:has(.reveal-item) .timebar-tag {
+  visibility: hidden;
+}
+.timebar-tags {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin: 4px var(--timebar-edge) 0;
+}
+.timebar-tags:empty {
+  margin-top: 0;
+}
+.timebar-tag {
+  position: relative;
+  justify-self: start;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: var(--text-small);
+  font-weight: var(--weight-strong);
+  padding: 2px 8px;
+  border-radius: var(--radius);
+  color: var(--surface);
+}
+.timebar-tag::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -5px;
+  margin-left: -5px;
+  border: 5px solid transparent;
+  border-top: 0;
+  border-bottom-color: var(--site1);
+}
+.timebar-tag.site2::before {
+  border-bottom-color: var(--site2);
+}
+.timebar-tag.other {
+  opacity: 0.6;
+}

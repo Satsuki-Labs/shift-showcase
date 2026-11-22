@@ -1,0 +1,16 @@
+{
+  "name": "@shift-showcase/server",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261030.1"
+  },
+  "dependencies": {
+    "fflate": "0.8.3",
+    "jose": "6.2.14"
+  }
+}

@@ -1,0 +1,140 @@
+.tpick > div::-webkit-scrollbar-track {
+  margin: 6px 0;
+}
+.tpick > div {
+  scrollbar-gutter: stable both-edges;
+}
+.time-field {
+  position: relative;
+  width: 170px;
+}
+.time-field.compact {
+  width: 140px;
+}
+.time-field.compact .time input,
+.time-field.compact .time-field-value {
+  font-size: var(--text-body);
+}
+.time-field.compact .time > button {
+  min-width: 46px;
+}
+.time {
+  display: flex;
+}
+.time-field .form-message .msg {
+  word-break: auto-phrase;
+}
+.time-field .time-field-entry {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+}
+.time-field .time-field-value {
+  position: absolute;
+  inset: 2px 0 2px 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  visibility: hidden;
+  font-size: var(--time-input-size);
+  font-weight: var(--weight-strong);
+  text-align: center;
+}
+.time-field .time-field-value.arrive {
+  visibility: visible;
+}
+.time-field .time-field-entry:has(.arrive) input,
+.time-field .time-field-entry:has(.arrive) input::placeholder {
+  color: transparent;
+}
+.time input {
+  font: inherit;
+  line-height: revert-layer;
+  font-size: var(--time-input-size);
+  font-weight: var(--weight-strong);
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  text-align: center;
+  color: var(--text);
+  background: var(--surface);
+  border: 2px solid var(--text-sub);
+  border-right: 0;
+  border-radius: var(--radius-part) 0 0 var(--radius-part);
+}
+.time > button {
+  min-width: 52px;
+  background: var(--surface);
+  color: var(--action);
+  border: 2px solid var(--text-sub);
+  border-radius: 0 var(--radius-part) var(--radius-part) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.time > button.open {
+  background: var(--action);
+  color: var(--surface);
+  border-color: var(--action);
+}
+.time-popup {
+  position: absolute;
+  z-index: 3;
+  top: 100%;
+  left: 0;
+  width: 220px;
+  margin-top: 6px;
+}
+.time-popup > .reveal,
+.time-popup > .reveal > div,
+.time-popup .tpick {
+  max-height: inherit;
+}
+.time-popup .tpick {
+  grid-template-rows: minmax(0, 1fr);
+}
+.tpick {
+  display: grid;
+  grid-template-columns: calc(50% - 0.5px) calc(50% + 0.5px);
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-part);
+  box-shadow: var(--shadow-popup);
+}
+.tpick > div {
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  min-height: 0;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.tpick > div + div {
+  border-left: 1px solid var(--line);
+}
+.tpick b {
+  font-size: var(--text-small);
+  color: var(--text-sub);
+  text-align: center;
+}
+.tpick button {
+  font: inherit;
+  line-height: revert-layer;
+  min-height: 44px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: var(--surface);
+  color: var(--text);
+  border-radius: var(--radius-small);
+  font-size: var(--time-input-size);
+  font-weight: var(--weight-strong);
+}
+.tpick button.on {
+  background: var(--action);
+  color: var(--surface);
+}

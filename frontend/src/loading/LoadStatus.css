@@ -1,0 +1,20 @@
+.loading-center {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+.load-status {
+  display: grid;
+  gap: var(--space-2);
+}
+.load-status .btn {
+  justify-self: start;
+}
+body[data-management] main.load-page {
+  width: min(1232px, calc(100% - var(--space-2)));
+  max-width: none;
+  margin: 0 0 0 var(--space-1);
+  padding: calc(var(--space-4) * 2) var(--space-2) var(--space-4);
+}

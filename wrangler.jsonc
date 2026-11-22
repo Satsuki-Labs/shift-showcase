@@ -1,0 +1,33 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "shift-showcase",
+  "main": "server/src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "vars": {
+    "ENVIRONMENT": "本番",
+    // Three email keys, with one role each: "first", "second", "maintenance".
+    "ROLE_TABLE": {
+      "first@example.com": "first",
+      "second@example.com": "second",
+      "maintainer@example.com": "maintenance"
+    },
+    // Team name only (the part before .cloudflareaccess.com), and application AUD tag.
+    "ACCESS_TEAM": "your-team",
+    "ACCESS_AUDIENCE": "your-access-aud"
+  },
+  "durable_objects": {
+    "bindings": [
+      { "name": "ORGANIZATION", "class_name": "OrganizationObject" }
+    ]
+  },
+  "migrations": [
+    { "tag": "v1-organization-sqlite", "new_sqlite_classes": ["OrganizationObject"] }
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  }
+}

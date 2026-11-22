@@ -1,0 +1,1 @@
+ALTER TABLE period_snapshots ADD COLUMN staff_format INTEGER NOT NULL DEFAULT 0;

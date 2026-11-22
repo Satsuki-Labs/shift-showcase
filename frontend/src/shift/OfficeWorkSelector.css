@@ -1,0 +1,32 @@
+.shift-office-choice {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+  margin-top: var(--space-1);
+  padding: 10px 12px;
+  border-radius: var(--radius-small);
+  background: var(--office-choice-surface);
+}
+.shift-office-choice > b {
+  margin-right: var(--space-1);
+}
+.shift-office-choice button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: var(--radius-part);
+  border: 2px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  line-height: revert-layer;
+  font-weight: var(--weight-strong);
+}
+.shift-office-choice button.on {
+  border-color: var(--action);
+  background: var(--action);
+  color: var(--surface);
+}

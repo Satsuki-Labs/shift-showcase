@@ -1,0 +1,173 @@
+.bulk-input {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: flex-start;
+  background: var(--well);
+  border-radius: var(--radius-part);
+  padding: var(--space-2);
+}
+.bulk-input .bulk-operation-section,
+.bulk-input .bulk-target-reveal {
+  flex: none;
+}
+.bulk-input .sec-t,
+.bulk-input .bulk-assignment .lab {
+  padding: 0;
+  margin: 0 0 4px;
+  min-height: 26px;
+  font-size: var(--text-small);
+  color: var(--text-sub);
+  gap: 6px;
+}
+.bulk-input .sec-t svg {
+  width: 20px;
+  height: 20px;
+}
+.bulk-input .bulk-operation-section .seg button {
+  gap: var(--space-1);
+}
+.bulk-input .danger .seg {
+  --action: var(--changed);
+}
+.bulk-input .bulk-content-reveal {
+  flex: 1 1 100%;
+  min-width: 0;
+}
+.bulk-input .bulk-input-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: var(--space-2);
+}
+.bulk-input .bulk-input-panel.single {
+  grid-template-columns: minmax(0, 1fr);
+}
+.bulk-input .bulk-times {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.bulk-input .bulk-times > .sec-t {
+  margin-bottom: -12px;
+}
+.bulk-input .bulk-times > .work-kind {
+  height: 48px;
+}
+.bulk-input .bulk-times .work-kind .seg {
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-flow: row;
+}
+.bulk-input .bulk-times .work-kind .back {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  background: var(--bg);
+  border: 0;
+  border-radius: var(--radius-small);
+}
+.bulk-input .bulk-times .work-kind .back:enabled {
+  box-shadow: none;
+}
+.bulk-input .site-slots {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.bulk-input .bulk-slot-choice {
+  flex: 0 1 calc(200% / 3);
+  min-width: 0;
+}
+.bulk-input .site-slots .seg {
+  width: 100%;
+  min-width: 0;
+}
+.bulk-input .site-slots .sat {
+  margin: 0;
+}
+.bulk-input .st {
+  flex: none;
+  margin-left: auto;
+}
+.bulk-input .st.e1 {
+  background: var(--line);
+  color: var(--text);
+}
+.bulk-input .st.e3 {
+  background: var(--site1-chip);
+  color: var(--action);
+}
+.bulk-input .bulk-time-fields .time-fields {
+  margin: 0;
+}
+.bulk-input .bulk-time-message > .reveal-item {
+  padding-top: var(--space-2);
+}
+.bulk-input .bulk-none-note {
+  margin: 0;
+  font-size: var(--text-small);
+  font-weight: var(--weight-strong);
+  color: var(--text-sub);
+}
+.bulk-input .bulk-input-right {
+  display: grid;
+  align-content: start;
+}
+.bulk-input .bulk-input-details:has(.bulk-roles) > [data-reveal-key='assignment'] {
+  padding-bottom: var(--space-2);
+}
+.bulk-input .bulk-assignment {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: flex-start;
+}
+.bulk-input .bulk-assignment .lab {
+  margin: 0;
+}
+.bulk-input .bulk-roles {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+.bulk-input .bulk-roles > .sec-t {
+  margin: 0;
+}
+.bulk-input .roles-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.bulk-input .roles-grid button {
+  min-width: 0;
+  width: 100%;
+  padding: 0 var(--space-1);
+}
+.bulk-input .bulk-remove-roles {
+  --action: var(--changed);
+}
+.bulk-input .shift-office-choice > b {
+  flex-basis: 100%;
+}
+.bulk-input .chk input:focus-visible + .cell-check {
+  outline: 2px solid var(--action);
+  outline-offset: 2px;
+}
+.bulk-input > .bulk-cancel {
+  flex: 1 1 0;
+  min-width: 0;
+  align-self: stretch;
+  align-items: center;
+  font-size: var(--text-small);
+  gap: var(--space-1);
+}
+.bulk-input .bulk-cancel > svg {
+  flex: none;
+}
+.bulk-input .bulk-cancel > div {
+  word-break: auto-phrase;
+}
+.bulk-input .bulk-cancel span {
+  display: inline-block;
+}

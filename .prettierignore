@@ -1,0 +1,14 @@
+design/
+**/*.md
+**/*.html
+**/node_modules/
+**/dist/
+**/build/
+**/coverage/
+**/.wrangler/
+**/.vite/
+**/.playwright/
+**/.playwright-cli/
+**/test-results/
+**/playwright-report/
+output/

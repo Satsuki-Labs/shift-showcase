@@ -1,0 +1,42 @@
+.skeleton {
+  --skeleton-base: var(--skeleton-surface);
+  --skeleton-light: var(--skeleton-shine);
+  display: inline-block;
+  vertical-align: middle;
+  height: var(--skeleton-height);
+  border-radius: var(--radius-skeleton);
+  background: linear-gradient(
+      90deg,
+      var(--skeleton-base) 0%,
+      var(--skeleton-base) 35%,
+      var(--skeleton-light) 50%,
+      var(--skeleton-base) 65%,
+      var(--skeleton-base) 100%
+    )
+    0 0 / 300% 100% fixed;
+  animation: skeleton-shine var(--motion-skeleton-shine) var(--ease-skeleton-shine) infinite;
+}
+.skeleton-on-navy {
+  --skeleton-base: var(--skeleton-on-navy);
+  --skeleton-light: var(--skeleton-on-navy-shine);
+  height: var(--skeleton-band-height);
+}
+.skeleton-circle {
+  width: var(--skeleton-circle-size);
+  height: var(--skeleton-circle-size);
+  border-radius: var(--radius-skeleton-circle);
+}
+@keyframes skeleton-shine {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+    background: var(--skeleton-base);
+  }
+}

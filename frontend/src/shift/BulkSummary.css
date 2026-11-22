@@ -1,0 +1,67 @@
+.bulk-summary {
+  min-width: 0;
+  padding: 12px 20px 20px;
+}
+.bulk-summary > .sec-t {
+  padding: 0;
+  margin: 0 0 12px;
+  min-height: 26px;
+  color: var(--text-sub);
+  font-size: var(--text-small);
+  gap: 6px;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+.bulk-summary .bulk-summary-site {
+  margin-left: auto;
+  padding: 0 10px;
+  background: var(--site1);
+  color: var(--surface);
+  flex: none;
+}
+.bulk-summary .bulk-summary-site.c2 {
+  background: var(--site2);
+}
+.bulk-summary.cancelling > .sec-t,
+.bulk-summary.cancelling > .sec-t svg {
+  color: var(--danger-text);
+}
+.bulk-summary .bulk-summary-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-2);
+  align-items: stretch;
+}
+.bulk-summary .bulk-summary-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: 1fr;
+  gap: var(--space-1);
+}
+.bulk-summary .bulk-summary-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+  padding: 4px 12px;
+  background: var(--line);
+  border-radius: var(--radius-small);
+}
+.bulk-summary .bulk-summary-name {
+  font-size: var(--text-small);
+  font-weight: var(--weight-strong);
+  color: var(--text-sub);
+}
+.bulk-summary .bulk-summary-value {
+  font-size: var(--text-body);
+  font-weight: var(--weight-strong);
+  word-break: auto-phrase;
+  overflow-wrap: anywhere;
+}
+.bulk-summary .bulk-summary-sample {
+  display: flex;
+  justify-content: flex-start;
+  align-self: start;
+}

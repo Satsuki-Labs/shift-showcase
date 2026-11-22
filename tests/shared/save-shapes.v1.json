@@ -1,0 +1,423 @@
+{
+  "version": 1,
+  "operations": {
+    "settings.contact-names.save": {
+      "fields": { "first": "string", "second": "string" },
+      "optional": ["first", "second"]
+    },
+    "staff.save": {
+      "fields": {
+        "staff": {
+          "fields": {
+            "id": "string",
+            "name": "string",
+            "notes": "string",
+            "default_first_facility": { "union": [{ "enum": ["A", "B"] }, "null"] },
+            "default_second_facility": { "union": [{ "enum": ["C", "D"] }, "null"] },
+            "default_work_times": {
+              "fields": {
+                "normal": {
+                  "fields": {
+                    "first": {
+                      "fields": {
+                        "slot1": {
+                          "union": [{ "fields": { "start": "string", "end": "string" } }, "null"]
+                        },
+                        "slot2": {
+                          "union": [{ "fields": { "start": "string", "end": "string" } }, "null"]
+                        }
+                      }
+                    },
+                    "second": {
+                      "fields": {
+                        "slot1": {
+                          "union": [{ "fields": { "start": "string", "end": "string" } }, "null"]
+                        },
+                        "slot2": {
+                          "union": [{ "fields": { "start": "string", "end": "string" } }, "null"]
+                        }
+                      }
+                    }
+                  }
+                },
+                "peak": {
+                  "fields": {
+                    "first": {
+                      "fields": {
+                        "slot1": {
+                          "union": [{ "fields": { "start": "string", "end": "string" } }, "null"]
+                        },
+                        "slot2": {
+                          "union": [{ "fields": { "start": "string", "end": "string" } }, "null"]
+                        }
+                      }
+                    },
+                    "second": {
+                      "fields": {
+                        "slot1": {
+                          "union": [{ "fields": { "start": "string", "end": "string" } }, "null"]
+                        },
+                        "slot2": {
+                          "union": [{ "fields": { "start": "string", "end": "string" } }, "null"]
+                        }
+                      }
+                    }
+                  }
+                },
+                "saturday": {
+                  "union": [{ "fields": { "start": "string", "end": "string" } }, "null"]
+                }
+              }
+            },
+            "default_roles": {
+              "array": {
+                "enum": ["closing", "lead", "deputy", "prep", "temporary_absence", "alpha"]
+              }
+            },
+            "employment_status": { "enum": ["active", "leave", "retired"] },
+            "leave_start_date": { "union": ["string", "null"] },
+            "leave_expected_end_date": { "union": ["string", "null"] },
+            "retirement_date": { "union": ["string", "null"] }
+          }
+        },
+        "history": {
+          "fields": {
+            "quarter_hour_pay": {
+              "fields": { "value": "number", "period_id": "string" },
+              "optional": ["period_id"]
+            },
+            "employment_type": {
+              "fields": {
+                "value": { "enum": ["full_time", "part_time", "casual"] },
+                "period_id": "string"
+              },
+              "optional": ["period_id"]
+            },
+            "qualification": {
+              "fields": {
+                "value": { "enum": ["certified", "assistant", "none"] },
+                "period_id": "string"
+              },
+              "optional": ["period_id"]
+            },
+            "budget": {
+              "fields": { "value": "number", "period_id": "string" },
+              "optional": ["period_id"]
+            }
+          },
+          "optional": ["quarter_hour_pay", "employment_type", "qualification", "budget"]
+        }
+      }
+    },
+    "staff.delete": { "fields": { "id": "string" } },
+    "staff.reorder": { "array": "string" },
+    "shift.cell.save": {
+      "fields": {
+        "staff_id": "string",
+        "date": "string",
+        "status": { "enum": ["none", "paid_leave", "empty"] },
+        "roles": {
+          "array": {
+            "enum": [
+              "closing",
+              "lead",
+              "deputy",
+              "prep",
+              "temporary_absence",
+              "alpha",
+              "movement_first",
+              "movement_second"
+            ]
+          }
+        },
+        "special_care": "boolean",
+        "buildings": {
+          "array": {
+            "fields": {
+              "building": { "enum": [1, 2] },
+              "slots": {
+                "array": {
+                  "fields": {
+                    "start_time": "string",
+                    "end_time": "string",
+                    "facility": { "enum": ["A", "B", "C", "D"] },
+                    "is_office": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "notes": { "union": ["string", "null"] }
+      }
+    },
+    "shift.bulk.save": {
+      "fields": {
+        "cells": {
+          "array": {
+            "fields": {
+              "staff_id": "string",
+              "date": "string",
+              "status": { "enum": ["none", "paid_leave", "empty"] },
+              "roles": {
+                "array": {
+                  "enum": [
+                    "closing",
+                    "lead",
+                    "deputy",
+                    "prep",
+                    "temporary_absence",
+                    "alpha",
+                    "movement_first",
+                    "movement_second"
+                  ]
+                }
+              },
+              "special_care": "boolean",
+              "buildings": {
+                "array": {
+                  "fields": {
+                    "building": { "enum": [1, 2] },
+                    "slots": {
+                      "array": {
+                        "fields": {
+                          "start_time": "string",
+                          "end_time": "string",
+                          "facility": { "enum": ["A", "B", "C", "D"] },
+                          "is_office": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "notes": { "union": ["string", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "shift.cell.cancel": {
+      "fields": { "staff_id": "string", "date": "string", "building": { "enum": [1, 2] } }
+    },
+    "calendar.day.save": {
+      "fields": {
+        "date": "string",
+        "buildings": {
+          "array": {
+            "fields": {
+              "building": { "enum": [1, 2] },
+              "event": {
+                "union": [
+                  {
+                    "fields": {
+                      "content": "string",
+                      "arrival_time": { "union": ["string", "null"] }
+                    }
+                  },
+                  "null"
+                ]
+              },
+              "memo": { "union": ["string", "null"] },
+              "facilities": {
+                "array": {
+                  "fields": {
+                    "facility": { "enum": ["A", "B", "C", "D"] },
+                    "is_open": { "union": ["boolean", "null"] },
+                    "start_time": { "union": ["string", "null"] },
+                    "end_time": { "union": ["string", "null"] }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "confirmed": { "union": ["number", "null"] }
+      }
+    },
+    "calendar.days.save": {
+      "fields": {
+        "days": {
+          "array": {
+            "fields": {
+              "date": "string",
+              "buildings": {
+                "array": {
+                  "fields": {
+                    "building": { "enum": [1, 2] },
+                    "event": {
+                      "union": [
+                        {
+                          "fields": {
+                            "content": "string",
+                            "arrival_time": { "union": ["string", "null"] }
+                          }
+                        },
+                        "null"
+                      ]
+                    },
+                    "memo": { "union": ["string", "null"] },
+                    "facilities": {
+                      "array": {
+                        "fields": {
+                          "facility": { "enum": ["A", "B", "C", "D"] },
+                          "is_open": { "union": ["boolean", "null"] },
+                          "start_time": { "union": ["string", "null"] },
+                          "end_time": { "union": ["string", "null"] }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "confirmed": { "union": ["number", "null"] }
+      }
+    },
+    "calendar.peak.save": {
+      "fields": {
+        "before": {
+          "union": [
+            { "fields": { "start_date": "string", "end_date": "string", "name": "string" } },
+            "null"
+          ]
+        },
+        "after": {
+          "union": [
+            { "fields": { "start_date": "string", "end_date": "string", "name": "string" } },
+            "null"
+          ]
+        }
+      }
+    },
+    "calendar.annual-closure.save": {
+      "fields": {
+        "before": {
+          "union": [
+            {
+              "fields": {
+                "start_month": "number",
+                "start_day": "number",
+                "end_month": "number",
+                "end_day": "number",
+                "name": "string"
+              }
+            },
+            "null"
+          ]
+        },
+        "after": {
+          "union": [
+            {
+              "fields": {
+                "start_month": "number",
+                "start_day": "number",
+                "end_month": "number",
+                "end_day": "number",
+                "name": "string"
+              }
+            },
+            "null"
+          ]
+        },
+        "confirmed": { "union": ["number", "null"] }
+      }
+    },
+    "calendar.opening-rules.save": {
+      "fields": {
+        "fiscal_year": "number",
+        "rules": {
+          "array": {
+            "fields": {
+              "facility": { "enum": ["A", "B", "C", "D"] },
+              "normal_start_time": "string",
+              "normal_end_time": "string",
+              "peak_start_time": "string",
+              "peak_end_time": "string",
+              "saturday_start_time": "string",
+              "saturday_end_time": "string",
+              "arrival_end_mode": { "enum": ["fixed_time", "duration"] },
+              "arrival_end_time": { "union": ["string", "null"] },
+              "arrival_duration_minutes": { "union": ["number", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "period.publish": {
+      "fields": {
+        "id": "string",
+        "site": { "enum": ["first", "second"] },
+        "cells": { "record": { "record": "string" } }
+      }
+    },
+    "period.redistribute": {
+      "fields": {
+        "id": "string",
+        "site": { "enum": ["first", "second"] },
+        "cells": { "record": { "record": "string" } }
+      }
+    },
+    "period.create": {
+      "fields": {
+        "id": "string",
+        "name": "string",
+        "start_date": "string",
+        "end_date": "string",
+        "request_deadline_date": { "union": ["string", "null"] },
+        "coverage": {
+          "array": {
+            "fields": {
+              "facility": { "enum": ["A", "B", "C", "D"] },
+              "total_required": "number"
+            }
+          }
+        }
+      }
+    },
+    "period.update": {
+      "fields": {
+        "id": "string",
+        "name": "string",
+        "start_date": "string",
+        "end_date": "string",
+        "request_deadline_date": { "union": ["string", "null"] },
+        "coverage": {
+          "array": {
+            "fields": {
+              "facility": { "enum": ["A", "B", "C", "D"] },
+              "total_required": "number"
+            }
+          }
+        }
+      }
+    },
+    "period.request-url.regenerate": { "fields": { "id": "string" } },
+    "period.requests.close": { "fields": { "id": "string" } },
+    "period.delete": { "fields": { "id": "string" } },
+    "request.day.save": {
+      "fields": {
+        "staff_id": "string",
+        "date": "string",
+        "kind": {
+          "enum": [
+            "unavailable",
+            "am_unavailable",
+            "pm_unavailable",
+            "time_unavailable",
+            "available"
+          ]
+        },
+        "start_time": { "union": ["string", "null"] },
+        "end_time": { "union": ["string", "null"] },
+        "memo": { "union": ["string", "null"] }
+      },
+      "optional": ["memo"]
+    },
+    "request.day.delete": { "fields": { "staff_id": "string", "date": "string" } },
+    "request.none.set": { "fields": { "staff_id": "string" } },
+    "request.none.clear": { "fields": { "staff_id": "string" } }
+  }
+}

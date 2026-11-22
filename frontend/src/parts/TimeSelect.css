@@ -1,0 +1,21 @@
+.time-select {
+  position: relative;
+  width: 124px;
+  flex: none;
+}
+.time-select .pick-time {
+  width: 100%;
+  gap: 4px;
+  padding: 0 10px 0 16px;
+  font-size: var(--text-body);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.time-select-clock {
+  color: var(--action);
+  flex: none;
+}
+.time-select-popup .tpick button:disabled {
+  color: var(--text-sub);
+  opacity: 0.35;
+}

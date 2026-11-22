@@ -1,0 +1,74 @@
+.restore-notice {
+  width: 100%;
+  max-width: 600px;
+  margin: 0;
+}
+.restore-notice .dlg-head b {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.restore-notice .dlg-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.restore-notice .dlg-body p {
+  margin: 0 0 var(--space-1);
+}
+.restore-notice .dlg-foot {
+  justify-content: flex-end;
+}
+.restore-lost {
+  display: grid;
+  gap: calc(var(--space-1) / 2);
+}
+.restore-fact,
+.restore-who {
+  display: grid;
+  grid-template-columns: 9em minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-1);
+}
+.restore-who {
+  min-height: 32px;
+  color: var(--text);
+  font-weight: var(--weight-strong);
+}
+.restore-lost .restore-kind {
+  color: var(--text-sub);
+  font-size: var(--text-small);
+  font-weight: var(--weight-body);
+}
+.restore-notice .dlg-body p.restore-lost-t {
+  font-weight: var(--weight-strong);
+}
+.restore-facts {
+  display: grid;
+  gap: var(--space-1);
+}
+.restore-fk,
+.restore-kind {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-small);
+  color: var(--text-sub);
+  font-weight: var(--weight-strong);
+}
+.restore-fk svg,
+.restore-kind svg {
+  color: var(--action);
+  flex: none;
+}
+.restore-fv {
+  font-weight: var(--weight-strong);
+}
+.restore-fv.restore-big {
+  font-size: var(--text-title);
+}
+.restore-notice .dlg-body p.restore-gone {
+  margin: 0;
+  font-size: var(--text-small);
+  color: var(--text-sub);
+}

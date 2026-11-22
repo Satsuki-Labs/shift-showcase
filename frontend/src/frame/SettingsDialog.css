@@ -1,0 +1,62 @@
+.settings-dialog {
+  max-width: 640px;
+}
+.settings-login {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-1) var(--space-2);
+  padding-block: 10px;
+}
+.settings-login .kv {
+  display: contents;
+}
+.settings-dialog .settings-logout.btn {
+  margin-left: auto;
+  border: 0;
+  box-shadow: none;
+}
+.settings-logout-confirm {
+  max-width: 680px;
+}
+.settings-logout-confirm .settings-logout-account {
+  display: list-item;
+  list-style: disc;
+  margin-left: 1.5em;
+  margin-block: 1lh;
+}
+.settings-logout-account::marker {
+  color: var(--text-sub);
+  font-size: 0.6em;
+}
+.settings-contact {
+  padding: 0;
+}
+.settings-contact .copy-code {
+  background: transparent;
+  border-radius: inherit;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+}
+.settings-contact .copy-code pre {
+  padding: 10px calc(var(--touch) + 2 * var(--space-1)) 10px var(--space-2);
+  font-size: var(--text-body);
+}
+.settings-contact .copy-code-button {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.settings-name-fields {
+  display: grid;
+  gap: var(--space-2);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.settings-name-fields .dot {
+  margin-right: 6px;
+}
+.settings-name-hint {
+  font-size: var(--text-small);
+  color: var(--text-sub);
+  margin: var(--space-1) 0 0;
+}

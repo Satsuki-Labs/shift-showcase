@@ -1,0 +1,13 @@
+.floating-popup {
+  position: fixed;
+  z-index: 4;
+  right: auto;
+  margin-top: 0;
+}
+.floating-popup .pop {
+  position: static;
+  margin-top: 0;
+}
+.floating-popup .opt {
+  white-space: nowrap;
+}

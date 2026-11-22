@@ -1,0 +1,6 @@
+.excel-export-toast {
+  width: 420px;
+}
+.excel-export-toast .toast > div {
+  min-width: 0;
+}

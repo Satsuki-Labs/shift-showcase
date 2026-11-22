@@ -1,0 +1,34 @@
+/* font: inherit で上書きされた行高だけ、この土台へ戻せるようにする。 */
+@layer base {
+  * {
+    line-height: round(nearest, calc(var(--leading) * 1em), 2px);
+  }
+}
+
+body {
+  -webkit-user-select: none;
+  user-select: none;
+}
+:is(
+  input,
+  textarea,
+  .code,
+  .settings-contact-address,
+  .settings-login-address,
+  .excel-export-toast .toast-detail small,
+  .shift-excel-export-toast .toast-detail small
+) {
+  -webkit-user-select: text;
+  user-select: text;
+}
+.url-address {
+  -webkit-user-select: all;
+  user-select: all;
+}
+:is(.excel-export-toast, .shift-excel-export-toast) .toast-detail small {
+  pointer-events: auto;
+}
+
+body[data-management] {
+  zoom: var(--management-scale, 1);
+}

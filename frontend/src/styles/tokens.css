@@ -1,0 +1,329 @@
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url('/fonts/NotoSansJP-500.woff2') format('woff2');
+  ascent-override: 110.4%;
+  descent-override: 34.4%;
+}
+
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url('/fonts/NotoSansJP-700.woff2') format('woff2');
+  ascent-override: 110.4%;
+  descent-override: 34.4%;
+}
+
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url('/fonts/NotoSansJP-900.woff2') format('woff2');
+  ascent-override: 110.4%;
+  descent-override: 34.4%;
+}
+
+:root {
+  /* ピリオドの中身を読む間 */
+  --skeleton-surface: #e7e3dc;
+  --skeleton-shine: #f3f0eb;
+  --skeleton-on-navy: rgba(255, 255, 255, 0.3);
+  --skeleton-on-navy-shine: rgba(255, 255, 255, 0.55);
+  --skeleton-height: 14px;
+  --skeleton-band-height: 12px;
+  --skeleton-circle-size: 28px;
+  --radius-skeleton: 7px;
+  --radius-skeleton-circle: 50%;
+  --motion-skeleton-shine: 1.6s;
+  --ease-skeleton-shine: ease-in-out;
+  /* 書体：Noto Sans JP */
+  --font: 'Noto Sans JP', sans-serif;
+  --weight-body: 500;
+  --weight-strong: 700;
+
+  /* 文字の大きさ：3つだけ */
+  --text-small: 16px; /* 補足。これより小さい文字は使わない */
+  --text-body: 18px; /* 本文 */
+  --text-title: 24px; /* 見出し */
+  --number-unit-step: 4px; /* 数字に付く単位は、数字よりこの分だけ小さくする */
+  --leading: 1.6;
+  --tag-height: 34px;
+  --table-band-height: 56px; /* シフト・給与・スタッフ・ピリオドの見出し帯 */
+
+  /* 動き */
+  --motion-reveal: 0.3s; /* 出入り、Reveal、Dialog、希望の小窓、Calendar、ShiftTables */
+  --motion-reveal-blur: 6px;
+  --motion-slide: 0.24s; /* タブ、スタッフの並べ替え、RaisedPanel */
+  --motion-segment-slide: 0.3s; /* Segmentedの選択面と文字色 */
+  --motion-hover: 0.18s; /* 色の変化、icon-button */
+  --ease-standard: ease; /* 出入り、色の変化、Reveal */
+  --ease-pay-return: cubic-bezier(0.333333, 0, 0.666667, 1); /* 給与明細の末尾から氏名行へ戻る */
+  --ease-slide: cubic-bezier(
+    0.2,
+    0.85,
+    0.25,
+    1
+  ); /* タブ、スタッフの並べ替え、RaisedPanel、toast-in */
+  --ease-segment-slide: cubic-bezier(0.2, 1.35, 0.35, 1); /* Segmentedの選択面と文字色 */
+
+  /* 地と文字 */
+  --bg: #faf8f5; /* 画面の地（温かみのある白） */
+  --surface: #ffffff; /* 枠の中 */
+  --line: #d9d4cc; /* 区切り線 */
+  --text: #2b2a28; /* 本文の文字（白の上で14.3:1） */
+  --text-sub: #4e4943; /* 補足の文字（白の上で8.9:1） */
+
+  /* 押せるボタン：1色 */
+  --action: #2f4a6d; /* 落ち着いた紺（白い文字で9.0:1） */
+  --excel: #185c37;
+  --action-tint: #e6ecf3; /* 薄い紺：選んでいるタブや候補の地（紺の字で7.9:1） */
+  --field-group-surface: color-mix(in srgb, var(--text) 6%, transparent);
+  --radius-field-group: 18px;
+  --segment-selected-surface: color-mix(
+    in srgb,
+    currentColor 14%,
+    var(--bg)
+  ); /* Segmentedの操作色を受け継ぐ選択面 */
+  --raised-panel-segment-selected-surface: color-mix(
+    in srgb,
+    currentColor 26%,
+    var(--bg)
+  ); /* RaisedPanelの凸の上の切り替えで使う選択面 */
+  --segment-selected-hover-text: color-mix(
+    in srgb,
+    currentColor 85%,
+    var(--text)
+  ); /* Segmentedの選択中のhover */
+
+  /* 勤務のマス：1つの表の勤務は1色。第一は青、第二は茶。遠くからでも見分けやすく、色の見え方が人と違っても分けやすい組み合わせ（2026-09-30） */
+  --site1: #44749f; /* 第一の表：明るめの青（白い文字で4.9:1） */
+  --site2: #96502e; /* 第二の表：錆色（白い文字で6.0:1） */
+
+  /* 休みのマス：淡い地に黒い文字 */
+  --off: #d9d4cc; /* 公休・休業：灰色（2026-10-26） */
+  --paid: #aed0b9; /* 有給：公休と見分ける緑（2026-10-26） */
+
+  /* 意味を1つだけ持つ色 */
+  --changed: #8c3535; /* 赤：急ぐことや、ふだんは出ない状態。シフト表では発行の後に直した所、希望表では締め切り間近（白い文字で7.8:1） */
+  --danger-tint: color-mix(in srgb, var(--danger-text) 16%, transparent);
+  --danger-text: #702a2a;
+  --warn-bg: #fad5a5; /* 注意の地（濃いめのオレンジ） */
+  --warn-text: #5c3200; /* 注意の文字（7.9:1） */
+  --warn-mark: #b4540a; /* 注意のしるし（三角） */
+  --pay-bar-safe: #3e7c59; /* 給与管理の割合の帯：90%未満 */
+  --pay-bar-near: #d49b12; /* 給与管理の割合の帯：90%以上100%以下 */
+  --pay-bar-empty: #c9c2b6; /* 給与管理の割合の帯の空いている所の色 */
+  --sun: #8c3535; /* 日曜・祝日の見出しの文字（白の上で7.8:1） */
+  --sat: #1f4e8c; /* 土曜の見出しの文字（8.3:1） */
+  --role-y: #f2d675; /* Y（事務）の役割（黒い文字で10.0:1） */
+  --site1-tint: #e4ecf4; /* 第一の行事の地（薄い青） */
+  --site2-tint: #f5e6dc; /* 第二の行事の地（薄い錆色） */
+  --memo: #fff3c4; /* メモの地（黄色） */
+
+  /* 余白：8の倍数 */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --dialog-head-top: 20px;
+  --radius: 6px; /* シフト表のマスと表の見出し */
+  --radius-part: 20px; /* ボタン、欄、小窓、帯など、部品の角 */
+  --radius-small: 10px; /* 切り替え、部品の中の小さな物（チェックの四角、一覧の1行） */
+  --radius-part-inner: 16px; /* --radius-part の部品の4px内側の面（RaisedPanel.css .raised-panel-left .seg::before） */
+  --touch: 44px; /* 押せる所の最小の高さ */
+}
+
+:root {
+  --panel-back: #eee4d3; /* 奥のパネル、スタッフ管理・ピリオド管理の見出しの行 */
+  --well: #efece7;
+  --well-hover: rgba(43, 42, 40, 0.08);
+  --well-hover-strong: rgba(43, 42, 40, 0.16); /* 月・日付を送るボタンのホバーの地 */
+  --site1-chip: #bfceda;
+  --site2-chip: #d7cabb;
+  --radius-well: 24px;
+}
+
+:root {
+  /* 決まりから外れた値 */
+  --motion-clock-blink: 2s; /* frame.css .header-date-colon */
+  --ease-clock-blink: steps(1); /* frame.css .header-date-colon */
+  --motion-spinner: 0.9s; /* controls.css .spinner */
+  --ease-linear: linear; /* controls.css .spinner / request-sheet.css .rq-spinner */
+  --motion-toast-in: 0.32s; /* parts/Toast.css .toast.in */
+  --motion-toast-out: 0.28s; /* parts/Toast.css .toast.out */
+  --ease-toast-out: ease-in; /* parts/Toast.css .toast.out */
+  --motion-reveal-expand: 0.2s; /* Reveal.css --reveal-expand-duration / Reveal.tsx */
+  --motion-daily-arrive: 0.9s; /* shift.css .daily-open i.ng.arrive と ::after / DailyTable.tsx */
+  --motion-daily-arrive-delay: 350ms; /* DailyTable.tsx arriveを付けるまで */
+  --ease-daily-arrive: ease-out; /* shift.css .daily-open i.ng.arrive と ::after */
+  --motion-daily-handle: 0.15s; /* shift.css .daily-h */
+  --motion-daily-head: 0.5s; /* shift.css .daily-section.island .daily-head */
+  --ease-daily-head: cubic-bezier(
+    0.16,
+    0.9,
+    0.2,
+    1
+  ); /* shift.css .daily-section.island .daily-head */
+  --motion-request-press: 100ms; /* request-sheet.css --rq-press-duration */
+  --ease-request-press: ease-out; /* request-sheet.css .rq-mine / 名前・リンク・提出ボタン / .rq-tile */
+  --ease-request-reveal: cubic-bezier(
+    0.333333,
+    1,
+    0.666667,
+    1
+  ); /* request-sheet.css --rq-motion-easing / RequestDialog.tsx */
+  --motion-request-fresh: 2.4s; /* request-sheet.css .rq-gn .rq-fresh */
+  --motion-request-spinner: 0.8s; /* request-sheet.css .rq-spinner */
+  --motion-request-just: 1.2s; /* request-sheet.css .rq-mine.rq-just */
+  --scrollbar-size: 16px;
+  --scrollbar-thumb: #a8a29a; /* controls.css .scrollbar-thin::-webkit-scrollbar-thumb / shift.css .daily-body::-webkit-scrollbar-thumb */
+  --radius-handle: 8px; /* TimeBar.css .timebar-handle / shift.css .daily-h */
+  --header-date-size: 26px; /* frame.css .app-header-date */
+  --weight-heavy: 900; /* frame.css .app-header-date / shift.css .shift-legend > span / shift.css .shift-table-section > .band > b / shift.css .shift-grid thead th / shift.css .date-pop b / shift.css .date-pop .go / shift.css .date-pop .tm / shift.css .date-pop .pt .n / shift.css .shift-grid .shift-event-row th, .shift-grid .shift-event-row td, .shift-grid .shift-count-row th, .shift-grid .shift-count-row td / shift.css .shift-event / shift.css .shift-person-row .shift-name / shift.css .shift-qualification / FacilityCircle.css .fac / shift.css .daily-axis .daily-name / .daily-axis .daily-lane span / shift.css .daily-need / shift.css .daily-person .daily-name b / shift.css .daily-person .daily-name span / shift.css .daily-area / shift.css .daily-off / .bulk .rv-sum .big */
+  --saturday-on-dark: #bfdbfe; /* frame.css .app-header-date .saturday */
+  --sunday-on-dark: #fca5a5; /* frame.css .app-header-date .sunday */
+  --clock-surface: rgba(255, 255, 255, 0.16); /* frame.css .header-date-clock */
+  --on-navy-hover: rgba(255, 255, 255, 0.14);
+  --radius-header-control: 22px;
+  --light-divider: rgba(255, 255, 255, 0.45); /* frame.css .header-date-divider */
+  --radius-round: 999px; /* shift.css .shift-legend > span / shift.css .date-pop .go / shift.css .request-submission-tag / controls.css .rq-banner dt / periods.css .url-state / controls.css .close-names span / yearly.css .yearly-facility / controls.css .pill */
+  --paid-text: #1d3b28; /* shift.css .shift-legend .paid / shift.css .daily-off.paid */
+  --shift-name-size: 17px; /* shift.css .shift-grid thead .shift-name / shift.css .shift-date-weekday / shift.css .shift-person-row .shift-name / shift.css .daily-axis .daily-name / .daily-axis .daily-lane span / shift.css .daily-person .daily-name b */
+  --radius-facility: 14px; /* FacilityCircle.css .fac */
+  --shadow-shift-date-divider: inset -1px 0 0 var(--line); /* shift.css .shift-list-section .shift-grid thead th（日付の行。下の2pxの線は変えない） */
+  --shadow-shift-summary-divider:
+    inset -1px 0 0 var(--line), inset 0 -1px 0 var(--line); /* shift.css .shift-list-section .shift-grid tbody td・.shift-name（行事・人数・人の行） */
+  --date-warning-hover-surface: rgba(
+    255,
+    255,
+    255,
+    0.22
+  ); /* shift.css .date-warn:hover, .date-warn.open */
+  --shadow-date-pop: 0 8px 20px rgba(0, 0, 0, 0.18); /* shift.css .date-pop > .reveal */
+  --date-problem-heading-size: 14px; /* shift.css .date-pop .pt.hd */
+  --date-shortage-text: #c2410c; /* shift.css .date-pop .pt .n */
+  --date-zero-text: #c9c5bd; /* shift.css .date-pop .pt .n.z */
+  --date-number-size: 22px; /* shift.css .shift-date-number */
+  --coverage-surface: #f7f2e9; /* shift.css .shift-grid .shift-event-row・.shift-count-row / .daily-cover・.daily-cover .daily-name */
+  --coverage-text: var(
+    --text-sub
+  ); /* shift.css .shift-grid .shift-event-row th・.shift-count-row th / .daily-need */
+  --shift-empty-text: #ccc; /* shift.css .shift-event / shift.css .shift-grid .shift-count-row .zero */
+  --shift-event-placeholder-size: 12.5px; /* shift.css .shift-event.placeholder */
+  --shift-count-text: #1e4078; /* shift.css .shift-grid .shift-count-row td */
+  --shift-saturday-surface: #dbeafe; /* shift.css .shift-grid thead th.saturday */
+  --shift-sunday-surface: #fee2e2; /* shift.css .shift-grid thead th.sunday */
+  --shift-saturday-row-surface: color-mix(
+    in srgb,
+    var(--shift-saturday-surface) 45%,
+    var(--surface)
+  ); /* shift.css .shift-grid .shift-person-row .saturday */
+  --shift-sunday-row-surface: color-mix(
+    in srgb,
+    var(--shift-sunday-surface) 45%,
+    var(--surface)
+  ); /* shift.css .shift-grid .shift-person-row .sunday */
+  --shift-name-text: #172033; /* shift.css .shift-person-row .shift-name / shift.css .daily-person .daily-name b */
+  --shift-qualification-text: #68778b; /* shift.css .shift-qualification / shift.css .daily-person .daily-name span */
+  --request-unavailable-surface: #efe3c4; /* shift.css .shift-cell-view.holiday.sand / shift.css .request-view-cell.sand, .request-view-half.sand, .shift-legend .request-unavailable */
+  --request-unavailable-text: #4a3b14; /* shift.css .shift-cell-view.holiday.sand / shift.css .request-view-cell.sand, .request-view-half.sand, .shift-legend .request-unavailable */
+  --radius-role: 4px; /* shift.css .shift-time.other / shift.css .shift-role / shift.css .daily-role */
+  --work-role-surface: rgba(
+    255,
+    255,
+    255,
+    0.22
+  ); /* shift.css .shift-role / shift.css .daily-role */
+  --shift-role-size: 15px; /* shift.css .shift-role */
+  --shift-blank-surface: #eef3fa; /* shift.css .shift-cell-view.other .shift-role */
+  --shadow-request-mark: 0 0 1.5px rgba(43, 42, 40, 0.55); /* shift.css .request-view-mark, .request-view-marks svg, .request-view-legend-mark svg */
+  --request-available-surface: #dceef8; /* shift.css .request-view-cell.can, .shift-legend .request-available */
+  --request-available-text: #1f3f63; /* shift.css .request-view-cell.can, .shift-legend .request-available */
+  --request-caption-weight: 400; /* controls.css .rq-banner dd small */
+  --office-choice-surface: #fff6d6; /* .cell-ywhich */
+  --shadow-time-handle: 0 1px 4px rgba(15, 23, 42, 0.25); /* TimeBar.css .timebar-handle / shift.css .daily-h */
+  --spinner-light-line: rgba(255, 255, 255, 0.4); /* controls.css .spinner */
+  --spinner-dark-line: rgba(47, 74, 109, 0.25); /* controls.css .spinner.dark */
+  --shadow-dialog: 0 10px 30px rgba(0, 0, 0, 0.18); /* Dialog.css .dlg */
+  --radius-notice-count: 13px; /* frame.css .badge */
+  --shadow-popup: 0 8px 20px rgba(0, 0, 0, 0.12); /* frame.css .npanel / Toast.css .toast / SelectBox.css .pop / TimeField.css .tpick / DateField.css .cal */
+  --dialog-dim: rgba(43, 42, 40, 0.45); /* Dialog.css .dim / request-sheet.css .rq-dim */
+  --yearly-loading-surface: rgba(250, 248, 245, 0.7); /* yearly.css .yearly-loading */
+  --closed-surface: #eeeae4; /* yearly.css .yearly-day.closed / yearly.css .yearly-legend-closed / .bulk .bd.closed / .bulk .lg .l.closed */
+  --yearly-saturday-surface: #eef3fa; /* yearly.css .yearly-day.saturday */
+  --shadow-yearly-facility-divider: -2px 0 0 var(--surface); /* yearly.css .yearly-day-marks .yearly-facility + .yearly-facility */
+  --shadow-staff-drag: 0 6px 16px rgba(0, 0, 0, 0.15); /* staff.css .staff-reorder-row.dragging */
+  --radius-small-mark: 3px; /* .staff-row > .s1::before, .staff-row > .s2::before, .staff-row > .s12::before / .bulk .bulk-day-band */
+  --staff-leave-surface: #fff8ec; /* staff.css .staff-row.leave */
+  --staff-retired-surface: #eeeae4; /* staff.css .staff-row.gone */
+  --employment-part-time-surface: #e7e3dd; /* controls.css .pill.e2 */
+  --employment-casual-surface: #f3e9de; /* controls.css .pill.e3 */
+  --employment-casual-text: #5c3a12; /* controls.css .pill.e3 */
+  --time-input-size: 20px; /* TimeField.css .time input / TimeField.css .tpick button */
+  --event-memo-surface: #fffbea; /* yearly.css .event-row.memo */
+  --shadow-daily-summary-divider: inset 0 -1px 0 var(--line); /* shift.css .daily-cover・.daily-person の .daily-name・.daily-lane */
+  --shadow-daily-shortage-divider: inset 2px 0 0 var(--coverage-surface); /* shift.css 隣り合う不足の帯の境 */
+  --daily-arrive-surface: #fb923c; /* shift.css @keyframes daily-arrive-bg 0% */
+  --shadow-daily-arrive-start: 0 0 0 0 rgba(234, 88, 12, 0.75); /* shift.css @keyframes daily-arrive-ring 0% */
+  --shadow-daily-arrive-end: 0 0 0 7px rgba(234, 88, 12, 0); /* shift.css @keyframes daily-arrive-ring 100% */
+  --shadow-daily-work: 0 2px 5px rgba(15, 23, 42, 0.2); /* shift.css .daily-work */
+  --shadow-button: 0 3px 8px rgba(15, 23, 42, 0.3); /* 押せるボタンの影 */
+  --shadow-button-soft: 0 1px 3px rgba(15, 23, 42, 0.16); /* 水色の題名の帯の小窓の×ボタン（Dialog・SaveConflictDialog） */
+  --shadow-planned-card: 0 2px 8px rgba(15, 23, 42, 0.14); /* yearly.css .event-planned-row（行事を追加の、追加する予定のもののカード） */
+  --daily-area-surface: rgba(255, 255, 255, 0.25); /* shift.css .daily-area */
+  --daily-add-text: #b8c1ce; /* shift.css .daily-plus / .shift-cell-plus */
+  --daily-tip-surface: #1f2937; /* shift.css .daily-tip */
+  --shadow-daily-tip: 0 6px 16px rgba(15, 23, 42, 0.25); /* shift.css .daily-tip */
+  --shadow-daily-head-rest: 0 10px 22px rgba(0, 0, 0, 0); /* shift.css .daily-section.island .daily-head */
+  --shadow-daily-head-lift: 0 10px 22px rgba(0, 0, 0, 0.2); /* shift.css .daily-section.island .daily-head.lift */
+  --bulk-day-note-size: 12px; /* .bulk .bd small */
+  --bulk-total-size: 32px; /* .bulk .rv-sum .big */
+  --bulk-cancel-surface: #f6e9e9; /* .bulk .rv-one.a-none .bd.on, .bulk .rv-one.a-none .lg .l.on / .bulk .pill.kd */
+  --shadow-request-fresh: 0 0 0 4px var(--action-tint); /* request-sheet.css @keyframes rq-fresh 0% / request-sheet.css @keyframes rq-fresh 15% */
+  --shadow-request-fresh-end: 0 0 0 4px transparent; /* request-sheet.css @keyframes rq-fresh 100% */
+  --shadow-request-sheet: 0 -4px 16px rgba(0, 0, 0, 0.15); /* request-sheet.css .rq-sheet */
+  --request-rest-line: color-mix(
+    in srgb,
+    var(--text-sub) 35%,
+    var(--off)
+  ); /* request-sheet.css .rq-rest 上下の線 */
+  --request-spinner-line: rgba(
+    255,
+    255,
+    255,
+    0.45
+  ); /* request-sheet.css .rq-btn-main .rq-spinner */
+  --shadow-request-error: 0 6px 18px rgba(0, 0, 0, 0.25); /* request-sheet.css .rq-send-error */
+  --shadow-request-toast: 0 10px 28px rgba(0, 0, 0, 0.4); /* request-sheet.css .rq-toast */
+  --shadow-request-pulse-start: 0 0 0 0 rgba(47, 74, 109, 0.55); /* request-sheet.css @keyframes rq-just 0% */
+  --shadow-request-pulse-spread: 0 0 0 10px rgba(47, 74, 109, 0); /* request-sheet.css @keyframes rq-just 60% */
+  --shadow-request-pulse-end: 0 0 0 0 rgba(47, 74, 109, 0); /* request-sheet.css @keyframes rq-just 100% */
+  --shift-status-mark-size: 17px; /* ShiftCell.tsx fontSize */
+  --shift-request-mark-size: 15px; /* ShiftCell.tsx fontSize */
+  --request-toast-title-size: 22px; /* request-sheet.css .rq-toast b */
+  --request-names-size: 20px; /* request-sheet.css .rq-gn */
+  --request-closed-title-size: 20px; /* request-sheet.css .rq-closed-note b */
+  --request-choice-size: 20px; /* request-sheet.css .rq-tile */
+  --radius-pay-meter: 6px; /* pay.css #pay .bar */
+  --radius-pay-amount: 6px; /* shift.css #pay .ov, .budget-pop .ov / pay.css #pay .np / pay.css #pay table.dtab .pl */
+  --radius-event-kind: 14px; /* yearly.css .event-kind */
+  --radius-daily-area: 14px; /* shift.css .daily-area */
+  --radius-date-pop: 16px; /* shift.css .date-pop > .reveal */
+  --radius-warning-button: 8px; /* shift.css .date-warn / shift.css .budget-warn */
+  --radius-daily-tip: 8px; /* shift.css .daily-tip */
+  --radius-pay-card-meter: 8px; /* #pay .tc .bar */
+  --radius-scrollbar: 8px; /* controls.css .scrollbar-thin::-webkit-scrollbar-thumb / shift.css .daily-body::-webkit-scrollbar-thumb */
+  --radius-legend-swatch: 4px; /* yearly.css .yearly-legend-memo, .yearly-legend-closed / .bulk .lg .l */
+  --radius-request-shape: 3px; /* request-sheet.css .rq-shape */
+  --radius-request-grab: 3px; /* request-sheet.css .rq-grab */
+}
+
+/* 重ねた小さい担当区分の丸だけ。決まりの値の例外。 */
+:where(.facility-circles) {
+  --facility-secondary-size: 14px;
+}

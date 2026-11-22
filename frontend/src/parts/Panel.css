@@ -1,0 +1,72 @@
+.panel {
+  min-width: 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.panel-head {
+  min-width: 0;
+  padding: var(--space-2) var(--space-2) 0;
+}
+.panel-heading-row {
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.panel-title {
+  display: flex;
+  align-items: center;
+  flex: none;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: var(--text-body);
+  font-weight: var(--weight-strong);
+  line-height: 32px;
+  color: var(--action);
+  white-space: nowrap;
+}
+.panel-title > svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+.panel-title > .dot {
+  flex: none;
+}
+.panel-content {
+  min-width: 0;
+  padding: var(--space-2);
+  background: var(--well);
+  border-radius: var(--radius-part);
+}
+.panel-inside {
+  background: var(--well);
+  border-radius: var(--radius-part);
+}
+.panel-raised > .panel-head {
+  position: relative;
+  justify-self: start;
+  background: var(--well);
+  border-radius: var(--radius-part) var(--radius-part) 0 0;
+}
+.panel-raised > .panel-head::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  bottom: 0;
+  width: var(--radius-date-pop);
+  height: var(--radius-date-pop);
+  background: radial-gradient(
+    circle at 100% 0,
+    transparent calc(var(--radius-date-pop) - 0.5px),
+    var(--well) var(--radius-date-pop)
+  );
+}
+.panel-raised > .panel-content {
+  border-top-left-radius: 0;
+}
+.panel-outside > .panel-head {
+  padding-block: 0 var(--space-1);
+}

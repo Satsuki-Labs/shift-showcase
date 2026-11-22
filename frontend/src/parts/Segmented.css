@@ -1,0 +1,100 @@
+.seg {
+  position: relative;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  border-radius: var(--radius-small);
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--action);
+}
+.seg::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: calc(var(--seg-left, 0px) + 4px);
+  width: calc(var(--seg-width, 0px) - 8px);
+  background: var(--segment-selected-surface);
+  border-radius: var(--radius-small);
+}
+.seg.seg-unselected::before {
+  display: none;
+}
+.seg.ready::before {
+  transition:
+    left var(--motion-segment-slide) var(--ease-segment-slide),
+    width var(--motion-segment-slide) var(--ease-segment-slide);
+}
+.seg button {
+  position: relative;
+  z-index: 1;
+  border: 0;
+  background: none;
+  font: inherit;
+  line-height: revert-layer;
+  min-height: 48px;
+  min-width: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 0 var(--space-2);
+  color: var(--text-sub);
+  font-size: var(--text-small);
+  font-weight: var(--weight-strong);
+  cursor: pointer;
+  transition: color var(--motion-segment-slide) var(--ease-segment-slide);
+}
+.seg button.single {
+  font-size: var(--text-body);
+}
+.seg button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.seg button + button {
+  border-left: 2px solid transparent;
+}
+.seg button + button::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: 14px;
+  bottom: 14px;
+  width: 2px;
+  border-radius: var(--radius-round);
+  background: var(--line);
+  pointer-events: none;
+}
+.seg button.on {
+  color: var(--action);
+}
+.seg button:hover:enabled {
+  color: var(--text);
+}
+.seg button.on:hover:enabled {
+  color: var(--segment-selected-hover-text);
+}
+.seg.seg-with-errors button {
+  padding: 0 24px;
+}
+.seg-with-errors .seg-label {
+  display: inline-flex;
+  align-items: baseline;
+}
+.seg-error {
+  width: 0;
+  height: calc(18px * 21.5 / 24);
+}
+.seg-error svg {
+  display: block;
+  margin-left: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seg.ready::before,
+  .seg button {
+    transition: none;
+  }
+}

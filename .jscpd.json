@@ -1,0 +1,8 @@
+{
+  "path": ["frontend/src", "server/src", "shared", "tools", "gas"],
+  "format": ["typescript", "tsx", "javascript", "css"],
+  "formatsExts": { "javascript": ["js", "mjs", "cjs", "gs"] },
+  "ignore": ["**/node_modules/**", "**/dist/**", "**/.wrangler/**"],
+  "reporters": ["json"],
+  "silent": true
+}

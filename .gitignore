@@ -1,0 +1,43 @@
+# Dependencies and generated outputs
+node_modules/
+dist/
+build/
+coverage/
+.wrangler/
+.vite/
+.playwright/
+.playwright-cli/
+test-results/
+playwright-report/
+__pycache__/
+*.py[cod]
+.venv/
+
+# 手元の道具の設定
+.claude/
+
+# Local credentials and environment
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+secrets*.json
+*.pem
+*.key
+
+# Business data and local operational artifacts
+/data/
+/backups/
+/logs/
+/tmp/
+/output/
+/release/
+/release-log/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini

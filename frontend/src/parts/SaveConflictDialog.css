@@ -1,0 +1,82 @@
+.save-conflict-dialog {
+  max-width: 900px;
+}
+.save-conflict-warning {
+  justify-self: start;
+  font-weight: var(--weight-strong);
+}
+.save-conflict-warning svg {
+  flex: none;
+}
+.save-conflict-target {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: var(--text-body);
+  font-weight: var(--weight-strong);
+}
+.save-conflict-target > span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.save-conflict-cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-2);
+}
+.save-conflict-card {
+  grid-row: 1 / -1;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+}
+.save-conflict-values {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: 2 / -1;
+  row-gap: 12px;
+}
+.save-conflict-values dl {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: 1 / -2;
+  gap: var(--space-1);
+  margin: 0;
+}
+.save-conflict-values dl:empty {
+  display: none;
+}
+.save-conflict-field {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+.save-conflict-values dt {
+  color: var(--text-sub);
+  white-space: pre-line;
+}
+.save-conflict-values dd {
+  margin: 0;
+  font-weight: var(--weight-strong);
+  line-height: 32px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.save-conflict-values > .btn {
+  grid-row: -2 / -1;
+  justify-self: end;
+  align-self: end;
+  padding-inline: var(--space-2);
+  white-space: nowrap;
+  color: var(--text);
+}
+.save-conflict-difference {
+  background: var(--danger-tint);
+  color: var(--danger-text);
+  border-radius: var(--radius-role);
+  padding: 2px 6px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}

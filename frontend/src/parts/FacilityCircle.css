@@ -1,0 +1,60 @@
+.fac {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  border-radius: var(--radius-facility);
+  color: var(--surface);
+  font-weight: var(--weight-heavy);
+  --leading: 1;
+  margin: 0 2px;
+}
+.fac > span {
+  transform: translate(0, -1px);
+}
+.fac[data-fac='C'] > span {
+  transform: translate(-0.8px, -1px);
+}
+.fac[data-fac='D'] > span {
+  transform: translate(0.4px, -1px);
+}
+.fac.c1 {
+  background: var(--site1);
+}
+.fac.c2 {
+  background: var(--site2);
+}
+.facility-circles {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  width: 46px;
+}
+.facility-circles > span {
+  display: flex;
+}
+.facility-circles .fac {
+  margin: 0;
+}
+.facility-circles > span + span {
+  margin-left: -4px;
+  margin-bottom: 1px;
+  align-self: flex-end;
+}
+.facility-circles > span + span .fac {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  font-size: var(--facility-secondary-size);
+  outline: 2px solid var(--facility-circle-border, var(--surface));
+}
+.facility-circles > span + span .fac > span {
+  transform: translateY(-0.75px);
+}
+.facility-circles > span + span .fac[data-fac='C'] > span {
+  transform: translate(-0.6px, -0.75px);
+}
+.facility-circles > span + span .fac[data-fac='D'] > span {
+  transform: translate(0.3px, -0.75px);
+}

@@ -1,0 +1,19 @@
+.closed-facility-notice > div {
+  min-width: 0;
+}
+.closed-facility-notice > svg {
+  flex: none;
+}
+.closed-facility-message {
+  white-space: pre-line;
+  word-break: auto-phrase;
+}
+.closed-facility-message + .closed-facility-message {
+  margin-top: var(--space-1);
+}
+.closed-facility-reveal:empty {
+  display: none;
+}
+.closed-facility-reveal > .reveal-item {
+  padding-block: var(--space-2);
+}

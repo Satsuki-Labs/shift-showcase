@@ -1,0 +1,45 @@
+.copy-code {
+  position: relative;
+  background: var(--well);
+  border-radius: var(--radius-small);
+}
+.copy-code pre {
+  margin: 0;
+  min-height: var(--touch);
+  display: flex;
+  align-items: center;
+  padding: var(--space-1) calc(var(--touch) + 2 * var(--space-1)) var(--space-1) var(--space-1);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: var(--text-small);
+  color: var(--text);
+}
+.copy-code code {
+  display: block;
+  font-family: ui-monospace, Consolas, monospace;
+  font-weight: var(--weight-body);
+}
+.copy-code .copy-code-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: var(--space-1);
+  background: transparent;
+  border: 0;
+}
+.copy-code .copy-code-button:is(:enabled, :disabled) {
+  box-shadow: none;
+}
+.copy-code .copy-code-button.failed {
+  color: var(--warn-text);
+  --warn-mark: var(--warn-text);
+}
+.copy-code-input {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}

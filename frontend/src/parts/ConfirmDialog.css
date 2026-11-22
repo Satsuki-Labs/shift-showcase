@@ -1,0 +1,28 @@
+.closure-confirm .dlg-body {
+  display: block;
+}
+.closure-confirm .dlg-body p {
+  margin: 0 0 var(--space-1);
+}
+.closure-confirm .dlg-body .closure-after {
+  margin: var(--space-2) 0 0;
+}
+.confirm-dialog.confirm-close-only .dlg-foot {
+  justify-content: flex-end;
+}
+.confirm-message-detail p {
+  margin: 0;
+}
+.confirm-message,
+.confirm-message-detail {
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  background: var(--field-group-surface);
+  border-radius: var(--radius-field-group);
+}
+.confirm-dialog .dlg-foot {
+  justify-content: space-between;
+}
+.confirm-without-message .dlg-body {
+  display: none;
+}

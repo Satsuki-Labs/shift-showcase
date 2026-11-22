@@ -1,0 +1,112 @@
+.chev {
+  color: var(--action);
+  flex: none;
+}
+.select-root {
+  position: relative;
+}
+.select-short {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  margin-top: 6px;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-part);
+  box-shadow: var(--shadow-popup);
+  padding: 6px;
+}
+.pop .opt {
+  width: 100%;
+  border: 0;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  line-height: revert-layer;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0 12px 0 38px;
+  border-radius: var(--radius-small);
+  font-weight: var(--weight-strong);
+  text-align: left;
+}
+.pop .opt.on {
+  background: var(--action-tint);
+  color: var(--action);
+  padding-left: 12px;
+}
+.select-popup {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+.select-popup .pop {
+  position: static;
+  overflow: hidden;
+  padding: 6px;
+}
+.select-popup[data-scroll-constrained] .pop {
+  padding-right: 0;
+}
+.select-options {
+  overflow: hidden;
+}
+.select-options .opt > svg {
+  flex: none;
+}
+.select-option-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.select-option-period {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-left: 8px;
+}
+.select-option-dates {
+  display: grid;
+  grid-template-columns: 3.4em 1.2em 3.4em;
+  align-items: center;
+  padding: 4px 10px;
+  background: var(--well);
+  border-radius: var(--radius-small);
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.select-option-dates > :first-child {
+  text-align: right;
+}
+.select-option-dates > :nth-child(2) {
+  text-align: center;
+}
+.select-option-dates > :last-child {
+  text-align: left;
+}
+.select-option-today {
+  flex: none;
+  padding: 2px 8px;
+  background: var(--action-tint);
+  color: var(--action);
+  border-radius: var(--radius-small);
+  font-size: var(--text-small);
+  white-space: nowrap;
+}
+.opt.on .select-option-today {
+  background: var(--surface);
+}

@@ -1,0 +1,4 @@
+ENVIRONMENT="手元"
+# Set a test email and one role: first, second, maintenance.
+LOCAL_EMAIL="local@example.invalid"
+LOCAL_ROLE="first"

@@ -1,0 +1,89 @@
+.reveal,
+.reveal-frame,
+.dlg.animate-height,
+.period-arrival,
+.value-arrival {
+  --reveal-expand-duration: var(--motion-reveal-expand);
+  --reveal-duration: var(--motion-reveal);
+  --reveal-blur: var(--motion-reveal-blur);
+}
+.reveal {
+  opacity: 0;
+  filter: blur(var(--reveal-blur));
+  transition:
+    opacity var(--reveal-duration) var(--ease-standard),
+    filter var(--reveal-duration) var(--ease-standard);
+}
+.reveal.open {
+  opacity: 1;
+  filter: none;
+}
+.reveal-frame {
+  position: relative;
+  align-content: start;
+  transition: height var(--reveal-duration) var(--ease-standard);
+}
+.reveal-item {
+  display: flow-root;
+  transition:
+    opacity var(--reveal-duration) var(--ease-standard),
+    filter var(--reveal-duration) var(--ease-standard),
+    transform var(--reveal-duration) var(--ease-standard);
+}
+.reveal-item.leaving {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+@keyframes period-arrival {
+  from {
+    opacity: 0;
+    filter: blur(var(--reveal-blur, var(--motion-reveal-blur)));
+  }
+  to {
+    opacity: 1;
+    filter: none;
+  }
+}
+.period-arrival {
+  animation: period-arrival var(--reveal-duration) var(--ease-standard);
+}
+.value-arrival {
+  position: relative;
+}
+.value-arrival.arrive > :first-child {
+  animation: period-arrival var(--reveal-duration) var(--ease-standard);
+}
+.value-arrival > .value-arrival-leaving {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: inherit;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 1;
+  filter: none;
+  transition: none;
+}
+.value-arrival.arrive > .value-arrival-leaving {
+  visibility: visible;
+  opacity: 0;
+  filter: blur(var(--reveal-blur));
+  transition:
+    opacity var(--reveal-duration) var(--ease-standard),
+    filter var(--reveal-duration) var(--ease-standard);
+}
+@media (prefers-reduced-motion: reduce) {
+  .period-arrival {
+    animation: none;
+  }
+  .value-arrival.arrive > :first-child {
+    animation: none;
+  }
+  .value-arrival > .value-arrival-leaving,
+  .value-arrival.arrive > .value-arrival-leaving {
+    display: none;
+    transition: none;
+  }
+}

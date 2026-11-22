@@ -1,0 +1,36 @@
+{
+  "name": "shift-showcase",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shift management app for small workplaces",
+  "workspaces": [
+    "frontend",
+    "server"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=@shift-showcase/frontend",
+    "build": "npm run build --workspace=@shift-showcase/frontend",
+    "typecheck": "npm run typecheck --workspace=@shift-showcase/frontend && npm run typecheck --workspace=@shift-showcase/server",
+    "test": "vitest run",
+    "structure": "node --test tools/structure/*.test.mjs && node tools/structure/run.mjs",
+    "format": "prettier --write \"{frontend,server,shared,tools,tests,gas}/**/*.{ts,tsx,js,mjs,css,json}\"",
+    "format:check": "prettier --check \"{frontend,server,shared,tools,tests,gas}/**/*.{ts,tsx,js,mjs,css,json}\"",
+    "maintenance": "node tools/maintenance/run.mjs",
+    "release": "node tools/release/run.mjs"
+  },
+  "engines": {
+    "node": ">=24.13.1 <25"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "1.4.11",
+    "@eslint/js": "10.0.1",
+    "eslint": "10.14.0",
+    "fake-indexeddb": "6.2.7",
+    "jscpd": "5.4.2",
+    "knip": "6.44.1",
+    "prettier": "3.9.10",
+    "typescript-eslint": "8.72.1",
+    "vitest": "4.1.12",
+    "wrangler": "4.156.0"
+  }
+}
